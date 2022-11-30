@@ -1,8 +1,11 @@
 import { createStore } from 'vuex'
 
+import { getRandomInt } from '@/utils/utils'
+
 export default createStore({
     state: {
-        count: 0
+        count: 0,
+        isLoading: false,
     },
     mutations: {
         add(state) {
@@ -17,5 +20,12 @@ export default createStore({
         substractNumber(state, value) {
             state.count -= value
         },
+    },
+    actions: {
+        async addRandom(context) {
+            const rnd = await getRandomInt(-7, 7)
+
+            context.commit('addNumber', rnd)
+        }
     }
 })

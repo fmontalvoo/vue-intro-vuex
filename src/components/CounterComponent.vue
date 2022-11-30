@@ -10,6 +10,9 @@
         <button class="minus" @click="substractNumber">-</button>
         <button class="plus" @click="addNumber">+</button>
     </div>
+    <div>
+        <button @click="addRandom">Add random</button>
+    </div>
 </template>
 
 <script>
@@ -32,6 +35,9 @@ export default {
         substractNumber() {
             this.$store.commit('substractNumber', 7);
         },
+        addRandom() {
+            this.$store.dispatch('addRandom')
+        }
     }
 }
 </script>
