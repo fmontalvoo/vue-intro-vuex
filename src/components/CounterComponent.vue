@@ -1,8 +1,8 @@
 <template>
     <h1>Counter Vuex</h1>
-    <p>Acceso directo: {{ $store.state.count }}</p>
+    <p>Acceso directo: {{ $store.state.counter.count }}</p>
     <p>Map state: {{ count }}</p>
-    <p>Square state: {{ $store.getters.square }}</p>
+    <p>Square state: {{ $store.getters['counter/square'] }}</p>
     <div>
         <button class="minus" @click="substract">-</button>
         <button class="plus" @click="add">+</button>
@@ -12,7 +12,7 @@
         <button class="plus" @click="addNumber">+</button>
     </div>
     <div>
-        <button @click="addRandom" :disabled="isLoading">Add random</button>
+        <button @click="addRnd" :disabled="isLoading">Add random</button>
     </div>
 </template>
 
@@ -21,22 +21,24 @@ import { mapState, mapActions } from 'vuex'
 
 export default {
     computed: {
-        ...mapState(['count', 'isLoading'])
+        ...mapState('counter', ['count', 'isLoading'])
     },
     methods: {
         add() {
-            this.$store.commit('add');
+            this.$store.commit('counter/add');
         },
         substract() {
-            this.$store.commit('substract');
+            this.$store.commit('counter/substract');
         },
         addNumber() {
-            this.$store.commit('addNumber', 7);
+            this.$store.commit('counter/addNumber', 7);
         },
         substractNumber() {
-            this.$store.commit('substractNumber', 7);
+            this.$store.commit('counter/substractNumber', 7);
         },
-        ...mapActions(['addRandom'])
+        ...mapActions('counter', {
+            addRnd: 'addRandom'
+        })
     }
 }
 </script>
