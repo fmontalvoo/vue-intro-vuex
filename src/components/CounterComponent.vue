@@ -2,6 +2,7 @@
     <h1>Counter Vuex</h1>
     <p>Acceso directo: {{ $store.state.count }}</p>
     <p>Map state: {{ count }}</p>
+    <p>Square state: {{ $store.getters.square }}</p>
     <div>
         <button class="minus" @click="substract">-</button>
         <button class="plus" @click="add">+</button>

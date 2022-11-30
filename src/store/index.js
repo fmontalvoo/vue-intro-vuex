@@ -28,5 +28,11 @@ export default createStore({
             context.state.isLoading = false
             context.commit('addNumber', rnd)
         }
+    },
+    getters: {
+        square(state) {
+            const value = state.count
+            return value * value
+        }
     }
 })
