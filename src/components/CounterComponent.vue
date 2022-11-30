@@ -11,7 +11,7 @@
         <button class="plus" @click="addNumber">+</button>
     </div>
     <div>
-        <button @click="addRandom">Add random</button>
+        <button @click="addRandom" :disabled="isLoading">Add random</button>
     </div>
 </template>
 
@@ -20,7 +20,7 @@ import { mapState, mapActions } from 'vuex'
 
 export default {
     computed: {
-        ...mapState(['count'])
+        ...mapState(['count', 'isLoading'])
     },
     methods: {
         add() {
