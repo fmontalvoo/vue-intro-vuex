@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
     computed: {
@@ -35,9 +35,7 @@ export default {
         substractNumber() {
             this.$store.commit('substractNumber', 7);
         },
-        addRandom() {
-            this.$store.dispatch('addRandom')
-        }
+        ...mapActions(['addRandom'])
     }
 }
 </script>
